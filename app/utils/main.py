@@ -55,7 +55,7 @@ def exe_docx(name):
     c_p1 = cell.paragraphs[0]
     c_p1.paragraph_format.alignment = WD_PARAGRAPH_ALIGNMENT.CENTER
     c_run1 = c_p1.add_run()
-    c_run1.add_picture(str(info.photo), width=Cm(4), height=Cm(7))
+    c_run1.add_picture(str(info.photo), width=Cm(4), height=Cm(6.5))
 
     # 第二行数据
     hdr_cells1 = table.rows[1].cells
@@ -96,7 +96,7 @@ def exe_docx(name):
             for paragraph in paragraphs:
                 for run in paragraph.runs:
                     font = run.font
-                    font.size = Pt(14)
+                    font.size = Pt(10)
                     font.name = '宋体'
     # 打印列表
     return document.save(name + '常务委员推荐表.docx')
