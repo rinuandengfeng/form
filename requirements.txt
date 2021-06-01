@@ -21,3 +21,4 @@ Werkzeug
 wincertstore==0.2
 xlrd==2.0.1
 gevent
+python-docx

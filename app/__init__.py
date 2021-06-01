@@ -10,7 +10,7 @@ migrate = Migrate()
 
 def register_blueprints(app):
     from app.api.v1.admin import admin_bp
-    from app.api.v1.test import list_bp
+    from app.api.v1.list import list_bp
     from app.api.v1.login import login_bp
     from app.api.v1.download import download_db
     app.register_blueprint(admin_bp, url_prefix='/v1')
