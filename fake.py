@@ -2,6 +2,7 @@ from app import create_app, db
 
 from app.models.data import Data
 from app.models.admin import User
+
 app = create_app()
 
 with app.app_context():
@@ -11,6 +12,5 @@ with app.app_context():
     user.password = '123456'
     user.auth = 3
     user.name = '超级管理员'
-
     db.session.add(user)
     db.session.commit()

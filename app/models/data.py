@@ -24,7 +24,7 @@ class Data(db.Model):
     # 返回全部字段。
     def to_json(self):
         return {
-            # "id": self.id,
+            "id": self.id,
             "name": self.name,
             "sex": self.sex,
             "age": self.age,

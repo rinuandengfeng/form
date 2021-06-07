@@ -1,24 +1,35 @@
-alembic==1.6.2
+alembic @ file:///home/conda/feedstock_root/build_artifacts/alembic_1599849174714/work
 certifi==2020.12.5
-click
-Flask
+cffi @ file:///D:/bld/cffi_1613414103629/work
+click==7.1.2
+colorama @ file:///home/conda/feedstock_root/build_artifacts/colorama_1602866480661/work
+Flask==1.1.2
 Flask-Cors==3.0.10
+Flask-HTTPAuth==4.4.0
 Flask-Migrate==2.7.0
-Flask-SQLAlchemy==2.5.1
-greenlet==1.1.0
+Flask-SQLAlchemy @ file:///home/conda/feedstock_root/build_artifacts/flask-sqlalchemy_1616102249273/work
+gevent @ file:///D:/bld/gevent_1608673600745/work
+greenlet @ file:///D:/bld/greenlet_1620327737800/work
 gunicorn==20.1.0
-itsdangerous
-Jinja2
-Mako==1.1.4
-MarkupSafe==1.1.1
-PyMySQL==1.0.2
+itsdangerous==1.1.0
+Jinja2==2.11.2
+lxml==4.6.3
+Mako @ file:///home/conda/feedstock_root/build_artifacts/mako_1610659158978/work
+MarkupSafe @ file:///D:/bld/markupsafe_1610127684851/work
+Pillow==8.2.0
+pycparser @ file:///home/conda/feedstock_root/build_artifacts/pycparser_1593275161868/work
+PyMySQL @ file:///home/conda/feedstock_root/build_artifacts/pymysql_1610208984992/work
+pypinyin==0.40.0
 python-dateutil==2.8.1
-python-dotenv==0.17.1
+python-docx==0.8.11
+python-dotenv @ file:///home/conda/feedstock_root/build_artifacts/python-dotenv_1619733560351/work
 python-editor==1.0.4
-six==1.15.0
-SQLAlchemy
-Werkzeug
+simplejson @ file:///D:/bld/simplejson_1610147279246/work
+six @ file:///home/conda/feedstock_root/build_artifacts/six_1590081179328/work
+SQLAlchemy @ file:///D:/bld/sqlalchemy_1615904284383/work
+Werkzeug==1.0.1
 wincertstore==0.2
-xlrd==2.0.1
-gevent
-python-docx
+xlrd @ file:///home/conda/feedstock_root/build_artifacts/xlrd_1610224409810/work
+XlsxWriter==1.4.3
+zope.event @ file:///home/conda/feedstock_root/build_artifacts/zope.event_1600479883063/work
+zope.interface @ file:///D:/bld/zope.interface_1610147037124/work
