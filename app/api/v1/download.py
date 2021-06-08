@@ -26,7 +26,7 @@ def download_all():
     data = request.args
     page = data['page']
     all = Data.query.filter().paginate(int(page), int(10))
-    all = Data.query.all()
+    # all = Data.query.all()
     all_items = all.items
     file_list = []
     for i in all_items:
