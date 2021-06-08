@@ -12,30 +12,56 @@ download_all_bp = Blueprint('download_all_bp', __name__)
 @download_bp.route('/admin/download', methods=['GET', 'POST'])
 def file_download():
     id = request.args.get('id')
-    name = id + '.docx'
+    mes = Data.query.filter_by(id=id).first()
     exe_docx(id)
     from biaodan import app
     dirpath = os.path.join(app.root_path, '../')  # 这里是下在目录，从工程的根目录写起，比如你要下载static/js里面的js文件，这里就要写“static/js”
-    return send_from_directory(dirpath, id + '.docx', as_attachment=True,
+    return send_from_directory(dirpath, str(id) + str(mes.name) + '.docx', as_attachment=True,
                                mimetype='doc/docx')  # as_attachment=True 一定要写，不然会变成打开，而不是下载
 
 
-@download_all_bp.route('/admin/all', methods=['GET'], endpoint='zipball')
+@download_all_bp.route('/admin/all', methods=['POST'], endpoint='zipball')
 def download_all():
     info = []
-    limit = request.args.get('limit')
-    page = request.args.get('page')
-    all = Data.query.limit(limit).all()
+    data = request.args
+    page = data['page']
+    all = Data.query.filter().paginate(int(page), int(10))
+    all = Data.query.all()
+    all_items = all.items
     file_list = []
-    for i in all:
-        info.append(i.id)
+    for i in all_items:
+        info.append(str(i.id))
     for a in info:
-        exe_docx(str(a))
-        file_list.append(str(a) + '.docx')
+        exe_docx(a)
+    for b in all_items:
+        file_list.append(str(b.id) + str(b.name) + '.docx')
     with zipfile.ZipFile('第' + page + '页.zip', 'w') as zipobj:
         for file in file_list:
             zipobj.write(file)
     from biaodan import app
     dirpath = os.path.join(app.root_path, '../')  # 这里是下在目录，从工程的根目录写起，比如你要下载static/js里面的js文件，这里就要写“static/js”
     return send_from_directory(dirpath, '第' + page + '页.zip', as_attachment=True, mimetype='zip')
+
+
+    # info = []
+    # data = request.args
+    # page = data['page']
+    # all = Data.query.filter().paginate(int(page), int(10))
+    # all = Data.query.all()
+    # # all_items = all.items
+    # file_list = []
+    # for i in all:
+    #     info.append(str(i.id))
+    # for a in info:
+    #     exe_docx(a)
+    # for b in all:
+    #     file_list.append(str(b.id) + str(b.name) + '.docx')
+    # with zipfile.ZipFile('all.zip', 'w') as zipobj:
+    #     for file in file_list:
+    #         zipobj.write(file)
+    # 下载所有的文件
+    # from biaodan import app
+    # dirpath = os.path.join(app.root_path, '../')  # 这里是下在目录，从工程的根目录写起，比如你要下载static/js里面的js文件，这里就要写“static/js”
+    # return send_from_directory(dirpath, 'all.zip', as_attachment=True, mimetype='zip')
+
 

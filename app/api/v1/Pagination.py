@@ -4,7 +4,7 @@ from app.models.data import Data
 from app.utils.to_json import items_to_json
 
 paging_bp = Blueprint('pagin_bp', __name__)
-search_bp = Blueprint('search_bp',__name__)
+search_bp = Blueprint('search_bp', __name__)
 
 
 @paging_bp.route('/admin/page', methods=['GET'])
@@ -16,19 +16,21 @@ def paging():
     return {
         "code": 20000,
         "data": {
-                    "items":items_to_json(infos.items),
-                    "total":len(num)
+            "items": items_to_json(infos.items),
+            "total": len(num)
 
         }
     }
 
-@search_bp.route('/admin/search')
+
+@search_bp.route('/admin/name')
 def search():
-    name = request.args.get('name')
-    mes = Data.query.filter_by(name = name ).all()
+    param = []
+    data = request.args
+    if ('name' in data) and data['name']:
+        param.append(Data.name.like('%' + data['name'] + '%'))
+    infos = Data.query.filter(*param).all()
     return {
-        "code":20000,
-        "data":items_to_json(mes)
+        "code": 20000,
+        "data": items_to_json(infos)
     }
-
-

@@ -28,4 +28,4 @@ def paging():
             "items": items_to_json(infos.items),
             "total": len(num)
         }
-        }
+    }

@@ -98,7 +98,7 @@ def exe_docx(id):
                 for run in paragraph.runs:
                     font = run.font
                     font.size = Pt(10)
-                    font.name = '宋体'
+                    font.name = '楷体'
     # 打印列表
-
-    return document.save(id + '.docx')
+    a = '1'
+    return document.save(str(id) + str(info.name) + '.docx')
