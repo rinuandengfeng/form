@@ -16,6 +16,7 @@ def register_blueprints(app):
     from app.api.v1.Pagination import paging_bp
     from app.api.v1.Pagination import search_bp
     from app.api.v1.download import download_all_bp
+    from app.api.v1.download import download_page_bp
     app.register_blueprint(admin_bp, url_prefix='/v1')
     app.register_blueprint(list_bp, url_prefix='/v1')
     app.register_blueprint(login_bp, url_prefix='/v1')
@@ -23,6 +24,7 @@ def register_blueprints(app):
     app.register_blueprint(paging_bp,url_prefix='/v1')
     app.register_blueprint(search_bp,url_prefix='/v1')
     app.register_blueprint(download_all_bp, url_prefix='/v1')
+    app.register_blueprint(download_page_bp,url_prefix='/v1')
 
 def register_plugin(app):
     cors.init_app(app, supports_credentials=True, resources={r"/*": {"origins": "*"}})
